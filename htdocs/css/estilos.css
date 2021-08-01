@@ -1,0 +1,344 @@
+/* 
+    Created on : 28 feb. 2020
+    Author     : Miguel A Roldan
+*/
+*{
+    text-align: center;
+    background-color: rgb(250,250,250);
+}
+html, body{
+    font-family: 'Oxanium', cursive;
+    font-size: 100%;
+}
+
+header{
+    overflow: hidden;
+}
+
+footer{
+    clear:both;
+    position: relative;
+}
+
+body, h1, h2, h3{
+    margin: 0px; 
+    padding: 0px;
+}
+
+h1{
+    font-size: 3em;
+}
+
+h2{
+    font-size: 2.5em;
+}
+
+h3{
+    font-size: 1.5em;
+}
+
+p{
+    font-size: 1em;
+}
+
+#foot p{
+    text-align: center;
+}
+
+#index-main-list p{
+    text-align: center;
+}
+
+p, ol, ul{
+    margin-top: 0;
+}
+
+ol, ul{
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+.responsive{
+    max-width: 100%;
+    height: 200px;
+    object-fit: contain;
+}
+
+.error{
+    color: #FF0000;
+}
+
+#top-header{
+    height: 100px; 
+}
+
+
+#logo{
+    float: left;
+    padding: 0;
+    margin: 0;
+    height: 100px;
+    width: 20%;
+}
+
+#logo img{
+    height: 100%;
+    float: left;
+}
+#title-header{
+    width: 80%;
+}
+#login{
+    cursor: pointer;
+    border: none;
+    position:absolute;
+    right: 1em;
+    top: 1em;
+}
+#menu{
+    position: relative;
+    text-align: right;
+    float: right;
+    padding: 1em 0em;
+    width: 50%;
+    height: 100%;
+}
+
+#menu ul{
+    text-align: right;
+    float: left;
+}
+
+#menu li{
+    display: inline-block;
+    padding: 0;
+    margin: 0;
+    float: center;
+}
+
+#menu li a, #menu li span{
+    display: inline-block;
+    padding: 0em 1.5em;
+    text-decoration: none;
+    text-transform: uppercase;
+    line-height: 100%;
+}
+
+#menu li a{
+    color: #000;
+    display: block;
+}
+#menu li:hover a, #menu li span{
+    background: rgb(128,128,128);
+    color: #fff;
+    text-decoration: none;
+}
+
+#index-main-list{
+    width: 70%;
+    float: right;
+    display: grid;
+    grid-template-columns: auto auto auto;
+    align-content: space-evenly;
+    padding: 5px;
+}
+
+#index-main-aux{
+    width: 30%;
+    text-align: left;
+}
+
+#main-event{
+    width: 70%;
+    float: right;
+    padding: 5px;
+    
+}
+
+#main-event h3,p{
+    text-align: left;
+}
+
+#event-imgs{
+    float:right;
+    padding-left: 20px;
+}
+#event-imgs img{
+    display: block;
+}
+
+#icons-menu{
+    position: relative;
+    padding: 20px;
+    font-size: 30px;
+    text-align: center;
+    text-decoration: none;
+}
+
+#icons-menu ul{
+    text-align: right;
+    float: left;
+}
+
+#icons-menu img{
+    width: 50px;
+}
+#icons-menu li{
+    display: inline-block;
+    padding: 0;
+    margin: 0;
+    float: center;
+}
+
+.fa {
+  font-size: 30px;
+  width: 50px;
+  text-align: center;
+  text-decoration: none;
+}
+
+.fa:hover {
+  opacity: 0.7;
+}
+
+.fa-facebook {
+  background: #3B5998;
+  color: white;
+}
+
+.fa-twitter {
+  background: #55ACEE;
+  color: white;
+}
+
+.imprimir *{
+    background-color: white;
+    font-family: "Times New Roman", Times, serif;
+}
+
+.imprimir main{
+    margin-left: 10px;
+}
+
+.imprimir #logo{
+    float:right;
+}
+
+.imprimir #logo img{
+    float:right;
+}
+
+.imprimir #main-event{
+    width: 100%;
+}
+
+/* Sidepanel menu */
+.sidepanel{
+    height: 100%;
+    width: 0; /* It is changed using JavaScript */
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    right: 0;
+    background-color: dimgray;
+    overflow-x: hidden;
+    overflow-y: scroll;
+    padding-top: 60px;
+    transition: 0.5s;
+}
+
+#mySidePanel h1 h2 h6 p{
+    text-decoration: none;
+    display:block;
+}
+#mySidePanel p{
+    background-color: dimgray;
+    color: #d9d9d9;
+    text-align: center;
+}
+
+#mySidePanel h4{
+    background-color: dimgray;
+    color: #d9d9d9;
+}
+
+#mySidePanel h6{
+    background-color: dimgray;
+    color: #d9d9d9;
+}
+
+#mySidePanel form{
+    background-color: dimgray;
+    position: relative;
+    bottom: 0;
+    margin: auto;
+    text-align: center;
+}
+
+.sidepanel .closebtn{
+    position: absolute;
+    top: 0;
+    right: 10px;
+    margin-left: 25px;
+    font-size: 20px;
+    color: black;
+}
+
+/* Style the button that is used to open the sidepanel */
+.openbtn{
+    font-size: 1em;
+    cursor: pointer;
+    background-color: #111;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    position:absolute;
+    right: 0;
+}
+
+.openbtn:hover{
+    background-color: #444;
+}
+
+/* Modal */
+.modal{
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: #000;
+    background-color: rgba(0,0,0,0.4);
+}
+
+/* Model box/content */
+.modal-content{
+    background-color: #fefefe;
+    margin: 15% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+}
+
+/* Close Button */
+.close{
+    color: white;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close:hover, .close:focus{
+    color:black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+/* Hidden elements */
+.oculto{
+    display: none;
+}

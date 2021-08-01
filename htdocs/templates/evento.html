@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<!--
+Copyright (C) 2020 Miguel Angel Roldan
+
+This program is free software: you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with this program.  If not, see <http://www.gnu.org/licenses/>.
+-->
+<html>
+    <head>
+        <title>TECH CORNER</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        <link href="https://fonts.googleapis.com/css?family=Oxanium&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <link rel="stylesheet" href="/css/estilos.css">
+        
+        <script src="/javascript/actions.js"></script>
+        <script src="/javascript/formulario.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    </head>
+    
+    <body onload="obtenerPalabrotas();">
+        <!-- Header menu 
+        Contiene la cabecera de la pagina
+        -->
+        <header>
+            <div id="top-header">
+
+                <!-- Get table palabrotas -->
+                <div id="palabrotas" class="oculto"></div>
+                <div id="palabrotas_asteriscos" class="oculto"></div>
+                <!-- Web logo -->
+                <div id="logo">
+                    <img src="/images/logo.png" alt="Imagen no disponible" class="responsive">
+                </div>
+
+                <!-- Title of the page and the navigation menu -->
+                <div id="title-header">
+                    <h1>TECH CORNER</h1>
+                    <nav id="menu">
+                            <ul>
+                                <li><a href="/">Home</a></li>
+                                <li><a href="/evento/1">Discover</a></li>
+                                <li><a href="/about.html">About</a></li>
+                            </ul>
+                    </nav>
+                </div>
+                
+                <button class="openbtn" onclick="openSide()">Comentarios</button>
+
+                <div id="mySidePanel" class="sidepanel">
+                    <!-- Sidebar scripts-->
+                    <a href="javascript:void(0)" class="closebtn" onclick="closeSide()">&times;</a>
+
+                    <!-- Comentarios de usuarios anteriores -->
+                    {% for comentario in comentarios %}
+                        <h4 id="userComentario">{{ comentario['usuario'] }}</h4>
+                        <h6 id="fechaComentario">{{ comentario['fecha'] }}</h6>
+                        <p id="comentarioComentario">{{ comentario['comentario'] }}</p>
+
+                        {% if user %}
+                            {% if user.tipo != "registrado" %}
+                                <!-- Formulario para cambiar el comentario -->
+                                    <form action="/editarComentario.php" method="post">
+                                        <input type="hidden" name="idComentario" value="{{ comentario['id'] }}"><br>
+                                        <input type="text" name="nuevoComentario"><br><br>
+                                        <button type="submit">Cambiar comentario</button>
+                                        <button type="submit" formaction="/borrarComentario.php">Borrar comentario</button>
+                                    </form>
+                            {% endif %}
+                        {% endif %}
+                    {% endfor %}
+                        
+
+                    <h4 id="fill-name"></h4>
+                    <p id="fill-comment"></p>
+
+                    <!-- Formulario para subir un comentario -->
+                    {% if user %}
+                    <p id="nombre" class="oculto">{{ user.usuario }}</p>
+                    <p id="sendEvento" class="oculto">{{ evento.id }}</p>
+
+                        <form name="editar">
+                            <label for="comentario">Comentario:</label><br>
+                            <input type="text" id="comentario" name="comentario" onkeyup="comprobarPalabras();">
+                            <br><br>
+                            <input type="button" value="Enviar" onclick="validarForm();">
+                        </form>
+                    {% endif %}
+
+                    <p>
+                        <br><br><br><br>
+                    </p>
+                </div>
+            </div>
+        </header>
+
+        <!-- Main content -->
+        <main>
+            <div id="main-event">
+                {% block central %}
+
+                <section>
+                    <h2> {{ evento['titulo'] }} </h2>
+                    <h3> {{ evento['subtitulo'] }} </h3>
+                    <p>{{ evento['resumen'] | raw }}</p>
+                    <img src="{{ evento['img_link'] }}" alt="{{ evento['titulo'] }}" class="responsive">
+                </section>
+
+                {% endblock %}
+            
+                <div id="icons">
+                    <nav id="icons-menu">
+                            <ul>
+                                <li><a href="#" class="fa fa-facebook"></a></li>
+                                <li><a href="#" class="fa fa-twitter"></a></li>
+                                <li>
+                                    <a href="imprimir.php">
+                                        <img src="/images/print.png" alt="Imprimir">
+                                    </a>
+                                </li>
+                            </ul>
+                    </nav>
+                </div>
+            </div>
+            <!-- Auxiliar elements -->
+            <div id="index-main-aux">
+                <h2>Enlaces de interés</h2>
+                <a href="https://newzoo.com/" target="_blank">
+                    <figure>
+                        <img src="/images/newzoo.svg" alt="Newzoo Logo" style="max-width:100%;height:200px">
+                        <figcaption>Newzoo: Games & ESports Analytics</figcaption>
+                    </figure>
+                </a>
+
+                <a href="https://es.gizmodo.com/" target="_blank">
+                    <figure>
+                        <img src="/images/gizmodo.png" alt="Gizmodo Logo" class="responsive">
+                        <figcaption>Gizmodo España</figcaption>
+                    </figure>
+                </a>
+            </div>
+        </main>
+
+        <!-- Footer menu -->
+        <footer>
+            <div id="foot">
+                <hr>
+                <h3>Sistemas de Información Basados en Web</h3>
+                <p>&copy Find me on GitHub: miguelroldanc - 2020</p>
+            </div>
+        </footer>
+    </body>
+</html>
+ 

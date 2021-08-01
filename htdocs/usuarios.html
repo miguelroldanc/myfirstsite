@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Gestión de usuarios</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href="https://fonts.googleapis.com/css?family=Oxanium&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="css/estilos.css">
+    </head>
+    <body>
+        <form action="/cambiarPermisos.php" method="POST">
+            <select id="usuario" name="usuario">
+                <option value="">Selecciona un usuario:</option>
+                {% for usuario in usuarios %}
+                <option value="{{usuario.usuario}}">{{usuario.nombre}}</option>
+                {% endfor %}
+            </select>
+            <br>
+            <select id="permisos" name="permisos">
+                <option value="registrado">Registrado</option>
+                <option value="moderador">Moderador</option>
+                <option value="gestor">Gestor</option>
+            </select>
+            <br>
+            <input type="submit" value="Cambiar permisos">
+        </form>
+        <br>
+    </body>
+</html>

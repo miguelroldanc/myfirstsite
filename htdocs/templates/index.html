@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<!--
+Copyright (C) 2020 Miguel Angel Roldan
+
+This program is free software: you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with this program.  If not, see <http://www.gnu.org/licenses/>.
+-->
+<html>
+    <head>
+        <title>TECH CORNER</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href="https://fonts.googleapis.com/css?family=Oxanium&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="css/estilos.css">
+    </head>
+    
+    <body>
+        <!-- Header menu 
+        Contiene la cabecera de la pagina
+        -->
+        <header>
+            <div id="top-header">
+                <!-- Web logo -->
+                <div id="logo">
+                    <img src="images/logo.png" alt="Imagen no disponible" class="responsive">
+                </div>
+
+                <!-- Title of the page and the navigation menu -->
+                <div id="title-header">
+                    <h1>TECH CORNER</h1>
+                    <nav id="menu">
+                            <ul>
+                                <li><a href="">Home</a></li>
+                                <li><a href="/evento/1">Discover</a></li>
+                                <li><a href="/about.html">About</a></li>
+                            </ul>
+                    </nav>
+                </div>
+            </div>
+            <div id="login">
+                <!-- Search bar -->
+                <form action="">
+                    <input type="text" id="buscarEvento" placeholder="¿Que evento buscas?" name="buscarEvento" onkeyup="mostrarSugerencias(this.value);">
+                </form>
+                <ul id="busqueda">
+                </ul>
+
+                {% if not user %}
+                    <a href="/login.html">Identificarse</a>
+                {% else %}
+                <ul>
+                    <li><a href="/logout.php">Cerrar sesion</a></li>
+                    <li><a href="/infouser.html">Gestionar tu cuenta</a></li>
+                    {% if user.tipo == "gestor" or user.tipo == "super" %}
+                    <li><a href="/gestionEvento.php">Gestión de eventos</a></li>
+                    {% endif %}
+                    {% if user.tipo == "super" %}
+                        <li><a href="/gestionUsuarios.php">Gestión de usuarios</a></li>
+                    {% endif %}
+                </ul>
+                {% endif %}
+            </div>
+        </header>
+
+        <!-- Main content -->
+        <main>
+            <!-- Main list of elements -->
+            <h2>EVENTOS 2020</h2>
+            <div id="index-main-list">
+                {% for preview in previews %}
+                    <div>
+                        <a href="evento/{{ preview['evento'] }}">
+                            <img src="{{ preview['img_preview'] }}" alt="{{ preview['evento'] }}" class="responsive">
+                            <h3>{{ preview['titulo'] }}</h3>
+                        </a>
+                        <p>{{ preview['resumen'] }}</p>
+                    </div>
+                {% endfor %}
+            </div>
+
+<!-- Auxiliar elements -->
+            <div id="index-main-aux">
+                <h2>Enlaces de interés</h2>
+                <a href="https://newzoo.com/" target="_blank">
+                    <figure>
+                        <img src="images/newzoo.svg" alt="Newzoo Logo" style="max-width:100%;height:200px">
+                        <figcaption>Newzoo: Games & ESports Analytics</figcaption>
+                    </figure>
+                </a>
+
+                <a href="https://es.gizmodo.com/" target="_blank">
+                    <figure>
+                        <img src="images/gizmodo.png" alt="Gizmodo Logo" class="responsive">
+                        <figcaption>Gizmodo España</figcaption>
+                    </figure>
+                </a>
+            </div>
+        </main>
+
+        <!-- Footer menu -->
+        <footer>
+            <div id="foot">
+                <hr>
+                <h3>Sistemas de Información Basados en Web</h3>
+                <p>&copy Find me on GitHub: miguelroldanc - 2020</p>
+            </div>
+        </footer>
+    </body>
+</html>
+ 

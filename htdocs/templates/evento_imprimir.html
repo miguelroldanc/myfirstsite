@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<!--
+Copyright (C) 2020 migue
+
+This program is free software: you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with this program.  If not, see <http://www.gnu.org/licenses/>.
+-->
+<html>
+    <head>
+        <title>TECH CORNER</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="css/estilos.css">
+    </head>
+    <body class="imprimir">
+        <!-- Header menu 
+        Contiene la cabecera de la pagina
+        -->
+        <header>
+            <div id="top-header">
+                <!-- Web logo -->
+                <div id="logo">
+                    <img src="/images/logo.png" alt="Imagen no disponible" class="responsive">
+                </div>
+
+                <!-- Title of the page and the navigation menu -->
+                <div id="title-header">
+                    <h1>TECH CORNER</h1>
+                    <nav id="menu">
+                        <ul>
+                            <li><a href="/">Home</a></li>
+                            <li><a href="/evento/1">Discover</a></li>
+                            <li><a href="/about.html">About</a></li>
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+        </header>
+        
+        <!-- Main content -->
+        <main>
+            <!-- Event info -->
+            <div id="main-event">
+                {% block central %}
+
+                <section>
+                    <h2> {{ evento['titulo'] }} </h2>
+                    <h3> {{ evento['subtitulo'] }} </h3>
+                </section>
+                <section>
+                    <p>
+                        {{ evento['resumen'] | raw }}
+                    </p>
+
+                    <div id="event-imgs">
+                        <img src="{{ evento['img_link'] }}" alt="{{ evento['titulo'] }}" class="responsive">
+                    </div> 
+
+                </section>
+
+                {% endblock %}
+            </div>
+        </main>
+            
+        <!-- Footer menu -->
+        <footer>
+            <div id="foot">
+                <hr>
+                <h3>Sistemas de Información Basados en Web</h3>
+                <p>&copy Find me on GitHub: miguelroldanc - 2020</p>
+            </div>
+        </footer>
+    </body>
+</html>
